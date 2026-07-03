@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Quiz Arena</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-glow glow1"></div>
+  <div class="bg-glow glow2"></div>
+
+  <div class="container">
+    <header class="hero">
+      <h1>🎮 Real-Time Quiz Arena</h1>
+      <p>Jawab cepat, jawab benar, rebut posisi ranking tertinggi!</p>
+    </header>
+
+    <section class="top-bar card">
+      <div class="player-box">
+        <label for="playerName">Nama Pemain</label>
+        <input type="text" id="playerName" placeholder="Masukkan nama..." />
+      </div>
+
+      <div class="actions">
+        <button id="joinBtn" class="btn primary">Gabung Arena</button>
+        <button id="startBtn" class="btn secondary">Mulai Quiz</button>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <div class="card stat-card">
+        <h3>⏱ Timer</h3>
+        <div id="timer" class="big-number">15</div>
+      </div>
+
+      <div class="card stat-card">
+        <h3>🏆 Skor Saya</h3>
+        <div id="myScore" class="big-number">0</div>
+      </div>
+
+      <div class="card stat-card">
+        <h3>📌 Ronde</h3>
+        <div id="roundInfo" class="big-number">0 / 5</div>
+      </div>
+    </section>
+
+    <section class="quiz-section card">
+      <div class="quiz-header">
+        <span class="badge">PERTANYAAN AKTIF</span>
+        <span class="question-type">Pilihan Ganda</span>
+      </div>
+
+      <h2 id="questionText">Tekan "Mulai Quiz" untuk memulai permainan.</h2>
+
+      <div id="optionsContainer" class="options-grid"></div>
+
+      <div id="feedback" class="feedback">Menunggu jawaban...</div>
+    </section>
+
+    <section class="arena-grid">
+      <div class="card">
+        <h2>📊 Ranking Dinamis</h2>
+        <div id="rankingList" class="ranking-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>📈 Statistik Wajib</h2>
+        <div class="stats-box">
+          <div class="mini-stat">
+            <span>Rata-rata Waktu Jawab</span>
+            <strong id="avgAnswerTime">15 detik</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Akurasi Saya</span>
+            <strong id="myAccuracy">100%</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Distribusi Skor</span>
+            <strong id="scoreDistribution">Belum ada data</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>👥 Statistik Semua Pemain</h2>
+      <div id="playersTable" class="players-table"></div>
+    </section>
+
+    <section class="card hidden" id="winnerSection">
+      <h2>🏆 Hasil Akhir Quiz</h2>
+      <div id="winnerBoard"></div>
+    </section>
+
+    <footer class="footer">
+      <p>Real-Time Quiz Arena • Project Game Online Multiplayer</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
